@@ -47,6 +47,7 @@ body {
 	font-size: 1rem; /* Sets a base font size */
 	line-height: 1.5; /* Establishes line height for better readability */
 	font-family: sans-serif; /* Default font stack */
+	background-color: var(--magnolia);
 }
 
 ol,
@@ -62,10 +63,9 @@ img {
 /* Sidebar Styles */
 .sidebar {
 	background-image: url(assets/images/bg-sidebar-desktop.svg);
-	min-width: 275 px;
-	min-height: 900px;
-
-	float: left;
+	background-size: 100% auto;
+	min-width: 274px;
+	min-height: 568px;
 }
 
 .sidebar ul {
@@ -83,8 +83,31 @@ img {
 }
 
 /* Adjust Form Content Styles */
+.form-container {
+	background-color: var(--white);
+	background-size: cover;
+	border-radius: 20px;
+	margin: auto;
+	width: 60%;
+	display: flex;
+	padding: 1em;
+}
+.form-step {
+	height: 100%;
+}
+.content-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 100%;
+}
 .form-content {
-	margin-left: 220px;
+	padding-inline: 6em;
+}
+.step-title {
+}
+.input-group input {
+	width: 100%;
 }
 /* Attribution styles */
 .attribution {
