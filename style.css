@@ -1,0 +1,96 @@
+:root {
+	/* Layout */
+	--mobile-width: 375px;
+	--desktop-width: 1440px;
+
+	/* Colors */
+	--marine-blue: hsl(213, 96%, 18%);
+	--purplish-blue: hsl(243, 100%, 62%);
+	--pastel-blue: hsl(228, 100%, 84%);
+	--light-blue: hsl(206, 94%, 87%);
+	--strawberry-red: hsl(354, 84%, 57%);
+	--cool-gray: hsl(231, 11%, 63%);
+	--light-gray: hsl(229, 24%, 87%);
+	--magnolia: hsl(217, 100%, 97%);
+	--alabaster: hsl(231, 100%, 99%);
+	--white: hsl(0, 0%, 100%);
+
+	/* Typography */
+	--body-font-size: 16px;
+	--body-font-family: 'Ubuntu', sans-serif;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-bold: 700;
+}
+
+/* Reset CSS */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 1rem; /* Sets a base font size */
+	line-height: 1.5; /* Establishes line height for better readability */
+	font-family: sans-serif; /* Default font stack */
+}
+
+ol,
+ul {
+	list-style: none; /* Removes default list styles */
+}
+
+img {
+	max-width: 100%; /* Ensures images are responsive within their parent containers */
+	height: auto; /* Prevents image distortion by maintaining aspect ratio */
+}
+
+/* Sidebar Styles */
+.sidebar {
+	background-image: url(assets/images/bg-sidebar-desktop.svg);
+	min-width: 275 px;
+	min-height: 900px;
+
+	float: left;
+}
+
+.sidebar ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar ul li {
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.sidebar ul li.active {
+	font-weight: bold;
+}
+
+/* Adjust Form Content Styles */
+.form-content {
+	margin-left: 220px;
+}
+/* Attribution styles */
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
