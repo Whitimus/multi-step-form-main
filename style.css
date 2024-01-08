@@ -46,7 +46,7 @@ ul {
 body {
 	font-size: 1rem; /* Sets a base font size */
 	line-height: 1.5; /* Establishes line height for better readability */
-	font-family: sans-serif; /* Default font stack */
+	font-family: var(--body-font-family); /* Default font stack */
 	background-color: var(--magnolia);
 }
 
@@ -59,60 +59,138 @@ img {
 	max-width: 100%; /* Ensures images are responsive within their parent containers */
 	height: auto; /* Prevents image distortion by maintaining aspect ratio */
 }
-.numbered-indicators > * {
-	width: 60px;
-	font-family: var(--ff-serif);
-	font-size: var(--fs-500);
+.flex {
+	display: flex;
+}
+.font {
+	font-family: var(--body-font-family);
+	font-size: var(--font-weight-bold);
+}
+.numbered-indicators {
+	display: flex;
+	align-items: center;
+}
+.numbered-indicators > button {
+	width: 32px;
+	max-height: 32px;
 	border: 1px solid var(--white);
 	border-radius: 50%;
-	background-color: var(--light-blue) / 0;
+	cursor: pointer;
+	background: transparent;
 	color: var(--white);
+	font-weight: var(--font-weight-bold);
+	font-family: var(--body-font-family);
+	font-size: 15px;
 	aspect-ratio: 1;
 	padding: 0;
+	margin-right: 1em;
 }
 
-.numbered-indicators > button:hover,
-.numbered-indicators > button:focus {
-	border-color: hsl(var(--clr-white) / 0.5);
+/* Navigation buttons */
+.button-group {
+	display: flex;
+	justify-content: space-between;
 }
-.numbered-indicators > [aria-selected='true'] {
-	color: hsl(var(--clr-dark));
+.prev-step,
+.next-step {
+	padding: 1em 1.5em;
+
+	border-radius: 10px;
+	border: none;
+
+	font-size: 16px;
+	font-weight: var(--font-weight-bold);
+	cursor: pointer;
+}
+.prev-step {
+	background: transparent;
+	color: var(--cool-gray);
+}
+.prev-step:hover {
+	color: var(--marine-blue);
+}
+.next-step {
+	background-color: var(--marine-blue);
+	color: var(--white);
+	justify-self: flex-end;
+}
+/* Typography */
+.numbered-indicators [aria-selected='true'] {
+	color: #000;
 	background-color: var(--light-blue);
+}
+.text-indicators {
+	text-transform: uppercase;
+}
+.text-indicators p {
+	color: var(--light-gray);
+	font-size: 12px;
+}
+.text-indicators h4 {
+	margin: 0;
+	font-size: 14px;
+	font-weight: var(--font-weight-medium);
+	color: var(--white);
+}
+.step-title h1 {
+	color: var(--marine-blue);
+}
+.step-title p {
+	color: var(--cool-gray);
+}
+.plan-title {
+	padding-top: 3em;
+}
+.plan-title h3,
+.add-ons-title h3 {
+	color: var(--marine-blue);
+	font-weight: var(--font-weight-bold);
+	margin-bottom: 0.5em;
+}
+.plan-title p:last-of-type {
+	color: var(--marine-blue);
+	font-size: 12px;
+	font-weight: var(--font-weight-medium);
+}
+.plan-title p:first-of-type,
+.add-ons-title p {
+	color: var(--cool-gray);
+	font-size: 14px;
+	margin-bottom: 0.25em;
 }
 
 /* Sidebar Styles */
 .sidebar {
 	background-image: url(assets/images/bg-sidebar-desktop.svg);
-	background-size: cover;
+	background-size: 274px 568px;
 	background-repeat: no-repeat;
+	min-height: 570px;
 
-	width: 35%;
-	max-width: 274px;
+	/* width: 35%; */
+	min-width: 274px;
 }
 
 .sidebar ul {
 	list-style: none;
-	padding: 5em 1em;
-	margin: auto;
+	padding-top: 1em;
+
+	padding-inline: 1em;
+	margin: 1.5em;
 }
 
 .sidebar ul li {
-	margin-bottom: 10px;
+	margin-bottom: 1em;
 	cursor: pointer;
 }
 
-.sidebar ul li.active {
-	font-weight: bold;
-}
-
-/* Adjust Form Content Styles */
+/* Form Content Styles */
 .form-container {
 	background-color: var(--white);
 	background-size: cover;
 	border-radius: 20px;
-	box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.1);
-	margin: 10% auto;
-	max-width: 60%;
+	box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+	margin: 5% auto;
+	max-width: 65%;
 
 	display: flex;
 	padding: 1em;
@@ -123,18 +201,278 @@ img {
 .content-container {
 	display: flex;
 	flex-direction: column;
-
-	height: 80%;
+	padding: 2.25em 2.75em 0 2.75em;
 }
 .form-content {
 	padding-inline: 3rem;
 	flex: 1;
 }
-.step-title {
+
+/* Step 1 inputs  */
+.error-msg {
+	float: right;
+	color: var(--strawberry-red);
+	font-weight: var(--font-weight-bold);
+	font-size: 14px;
+}
+.input-group {
+	margin-top: 2.5em;
+	margin-bottom: 3em;
 }
 .input-group input {
 	width: 100%;
+	padding: 1rem;
+	margin-bottom: 1.5em;
+	border: 1px solid var(--light-gray);
+	border-radius: 10px;
+	color: var(--marine-blue);
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: var(--font-weight-bold);
 }
+.input-group input:focus {
+	outline: transparent;
+	border: 1px solid var(--marine-blue);
+}
+.input-group label {
+	font-size: 14px;
+	font-weight: var(--font-weight-medium);
+	color: var(--marine-blue);
+}
+
+/* Step 2 plan selection */
+
+/* Styles for Plan Selection and Toggle Switch */
+.plan-selection {
+	display: flex;
+	flex-direction: column;
+
+	margin: 3rem 0;
+}
+
+.plan-button {
+	padding: 20px 20px;
+	border: 1px solid var(--light-gray);
+	border-radius: 10px;
+	background-color: var(--white);
+	min-width: 31%;
+	text-align: left;
+	cursor: pointer;
+}
+.plan-button:hover {
+	border-color: var(--purplish-blue);
+}
+.plan-button.selected {
+	background-color: var(--light-blue);
+	border-color: var(--purplish-blue);
+}
+
+.plan-buttons,
+.add-ons-buttons {
+	display: flex;
+
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+/* Toggle Switch */
+
+.toggle-switch {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 1em 0;
+	margin-bottom: 2.25em;
+	background-color: var(--magnolia);
+}
+.toggle-switch p {
+	color: var(--cool-gray);
+	font-weight: var(--font-weight-bold);
+	margin-right: 1em;
+}
+.toggle-switch p:first-of-type {
+	color: var(--marine-blue);
+}
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 42px;
+	height: 23px;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--marine-blue);
+	transition: 0.4s;
+	border-radius: 34px;
+}
+
+.slider:before {
+	position: absolute;
+	content: '';
+	height: 18px;
+	width: 18px;
+	left: 3px;
+	bottom: 3px;
+	background-color: var(--white);
+	transition: 0.4s;
+	border-radius: 50%;
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+	transform: translateX(18px);
+}
+
+.slider.round {
+	border-radius: 34px;
+}
+
+.toggle-switch p {
+	margin-left: 8px;
+	font-size: 14px;
+}
+
+/* Step 2 plan selection */
+
+.add-ons-selection {
+	margin-top: 2em;
+	margin-bottom: 2.75em;
+}
+.add-ons-buttons {
+	flex-direction: column;
+}
+.add-ons-button {
+	display: flex;
+	padding: 0.18em 0;
+	align-items: center;
+	border: 1px solid var(--light-gray);
+	border-radius: 10px;
+	background-color: var(--white);
+
+	text-align: left;
+	cursor: pointer;
+}
+.add-ons-button:hover {
+	border-color: var(--purplish-blue);
+}
+
+/* Hide the original checkbox */
+.add-ons-button input[type='checkbox'] {
+	position: absolute;
+
+	opacity: 0;
+}
+
+/* Create a larger custom checkbox */
+.add-ons-button label {
+	position: relative;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background-color: var(--white);
+	border: 1px solid var(--light-gray);
+	border-radius: 4px;
+	margin: 2em; /* Spacing between checkbox and label text */
+}
+
+/* Style the checkmark using pseudo-elements */
+.add-ons-button label::after {
+	content: '';
+	position: absolute;
+	display: none;
+	width: 4px;
+	height: 8px;
+
+	border: solid var(--white);
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+	top: 4px;
+	left: 8px;
+}
+
+/* Show the checkmark when the checkbox is checked */
+.add-ons-button label.checked::after {
+	display: block;
+	/* Other styles for the checkmark */
+}
+.add-ons-button label.checked {
+	background-color: var(--purplish-blue);
+}
+.add-ons-price {
+	margin-left: auto;
+	margin-right: 2em;
+}
+.add-ons-price p {
+	font-size: 16px;
+	font-weight: var(--font-weight-medium);
+	color: var(--purplish-blue);
+}
+.selected {
+	background-color: var(--magnolia);
+	border-color: var(--purplish-blue);
+}
+
+/* Summary  */
+.summary {
+	margin-top: 2em;
+	margin-bottom: 2.5em;
+}
+.summary-details--container {
+	border-radius: 10px;
+	background-color: var(--magnolia);
+}
+.summary-divider {
+	width: 90%;
+	border-top: 1px solid var(--light-gray);
+	margin: auto;
+}
+.plan-details,
+.add-ons-details,
+.total-cost {
+	padding: 1em;
+}
+.plan-details > div,
+.add-ons-details > div,
+.total-cost {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1em;
+}
+.plan-details--price,
+.add-ons-details--price,
+.total-cost--price {
+	margin-left: auto;
+}
+.plan-details--title,
+.plan-details--price,
+.add-ons-details--price {
+	color: var(--marine-blue);
+}
+
+.plan-change,
+.add-ons-details--title,
+.total-cost--title {
+	color: var(--cool-gray);
+}
+.total-cost--price {
+	color: var(--purplish-blue);
+}
+
 /* Attribution styles */
 .attribution {
 	font-size: 11px;

@@ -13,6 +13,12 @@
 		/>
 
 		<title>Frontend Mentor | Multi-step form</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
 
 		<link rel="stylesheet" href="style.css" />
 		<style></style>
@@ -22,30 +28,52 @@
 			<!-- Sidebar start -->
 			<div class="sidebar">
 				<ul>
-					<li data-step="1">Your Info</li>
-					<li data-step="2">Select Plan</li>
-					<li data-step="3">Add-ons</li>
-					<li data-step="4">Summary</li>
+					<li class="numbered-indicators" data-step="1">
+						<button class="font" aria-selected="true">1</button>
+						<div class="text-indicators">
+							<p>Step 1</p>
+							<h4>Your Info</h4>
+						</div>
+					</li>
+					<li class="flex" data-step="2">
+						<div class="numbered-indicators">
+							<button class="font" aria-selected="false">2</button>
+						</div>
+						<div class="text-indicators">
+							<p>Step 2</p>
+							<h4>Select Plan</h4>
+						</div>
+					</li>
+					<li class="numbered-indicators" data-step="3">
+						<button class="font" aria-selected="false">3</button>
+						<div class="text-indicators">
+							<p>Step 3</p>
+							<h4>Add-ons</h4>
+						</div>
+					</li>
+					<li class="numbered-indicators" data-step="4">
+						<button class="font" aria-selected="false">4</button>
+						<div class="text-indicators">
+							<p>Step 4</p>
+							<h4>Summary</h4>
+						</div>
+					</li>
 				</ul>
-				<div class="numbered-indicators grid bg-dark">
-					<button aria-selected="true">1</button>
-					<button aria-selected="false">2</button>
-					<button aria-selected="false">3</button>
-				</div>
 			</div>
 			<!-- Sidebar end -->
 			<form id="multi-step-form" class="form-content">
 				<div class="form-step active" data-step="1">
 					<div class="content-container">
 						<div class="step-title">
-							<h2>Personal Info</h2>
+							<h1>Personal Info</h1>
 
 							<p>Please provide your name, email address, and phone number.</p>
 						</div>
 
 						<div class="input-row">
 							<div class="input-group">
-								<label for="name">Name</label><br />
+								<label for="name">Name</label
+								><span class="error-msg" id="name-error"></span><br />
 								<input
 									type="text"
 									id="name"
@@ -54,7 +82,8 @@
 									required
 								/>
 
-								<label for="email">Email Address</label><br />
+								<label for="email">Email Address</label
+								><span class="error-msg" id="email-error"></span><br />
 								<input
 									type="email"
 									id="email"
@@ -63,7 +92,8 @@
 									required
 								/>
 
-								<label for="phone">Phone Number</label><br />
+								<label for="phone">Phone Number</label
+								><span class="error-msg" id="phone-error"></span><br />
 								<input
 									type="tel"
 									id="phone"
@@ -73,31 +103,197 @@
 								/>
 							</div>
 						</div>
-
-						<button class="next-step">Next</button>
+						<div class="button-group">
+							<button class="prev-step"></button>
+							<button class="next-step" type="button">Next Step</button>
+						</div>
 					</div>
 				</div>
 
 				<div class="form-step" data-step="2">
 					<!-- Step 2: Select Plan -->
-					<h2>Step 2: Select Plan</h2>
-					<!-- Include input fields or selections for plan -->
-					<button class="prev-step">Previous</button>
-					<button class="next-step">Next</button>
+					<div class="content-container">
+						<div class="step-title">
+							<h1>Select your plan</h1>
+							<p>You have the option of monthly or yearly billing.</p>
+						</div>
+
+						<!-- Plan Selection Buttons -->
+						<div class="plan-selection">
+							<div class="plan-buttons">
+								<button class="plan-button" type="button" data-plan="Arcade">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="40"
+										height="40"
+										viewBox="0 0 40 40"
+									>
+										<g fill="none" fill-rule="evenodd">
+											<circle cx="20" cy="20" r="20" fill="#FFAF7E" />
+											<path
+												fill="#FFF"
+												fill-rule="nonzero"
+												d="M24.995 18.005h-3.998v5.998h-2v-5.998H15a1 1 0 0 0-1 1V29a1 1 0 0 0 1 1h9.995a1 1 0 0 0 1-1v-9.995a1 1 0 0 0-1-1Zm-5.997 8.996h-2v-1.999h2v2Zm2-11.175a2.999 2.999 0 1 0-2 0v2.18h2v-2.18Z"
+											/>
+										</g>
+									</svg>
+									<div class="plan-title">
+										<h3>Arcade</h3>
+										<p>$9/mo</p>
+									</div>
+								</button>
+								<button class="plan-button" type="button" data-plan="Advanced">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="40"
+										height="40"
+										viewBox="0 0 40 40"
+									>
+										<g fill="none" fill-rule="evenodd">
+											<circle cx="20" cy="20" r="20" fill="#F9818E" />
+											<path
+												fill="#FFF"
+												fill-rule="nonzero"
+												d="M25.057 15H14.944C12.212 15 10 17.03 10 19.885c0 2.857 2.212 4.936 4.944 4.936h10.113c2.733 0 4.943-2.08 4.943-4.936S27.79 15 25.057 15ZM17.5 20.388c0 .12-.108.237-.234.237h-1.552v1.569c0 .126-.138.217-.259.217H14.5c-.118 0-.213-.086-.213-.203v-1.583h-1.569c-.126 0-.217-.139-.217-.26v-.956c0-.117.086-.213.202-.213h1.584v-1.554c0-.125.082-.231.203-.231h.989c.12 0 .236.108.236.234v1.551h1.555c.125 0 .231.083.231.204v.988Zm5.347.393a.862.862 0 0 1-.869-.855c0-.472.39-.856.869-.856.481 0 .87.384.87.856 0 .471-.389.855-.87.855Zm1.9 1.866a.86.86 0 0 1-.87-.852.86.86 0 0 1 .87-.855c.48 0 .87.38.87.855a.86.86 0 0 1-.87.852Zm0-3.736a.862.862 0 0 1-.87-.854c0-.472.39-.856.87-.856s.87.384.87.856a.862.862 0 0 1-.87.854Zm1.899 1.87a.862.862 0 0 1-.868-.855c0-.472.389-.856.868-.856s.868.384.868.856a.862.862 0 0 1-.868.855Z"
+											/>
+										</g>
+									</svg>
+									<div class="plan-title">
+										<h3>Advanced</h3>
+										<p class="price">$12/mo</p>
+									</div>
+								</button>
+								<button class="plan-button" type="button" data-plan="Pro">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="40"
+										height="40"
+										viewBox="0 0 40 40"
+									>
+										<g fill="none" fill-rule="evenodd">
+											<circle cx="20" cy="20" r="20" fill="#483EFF" />
+											<path
+												fill="#FFF"
+												fill-rule="nonzero"
+												d="M26.666 13H13.334A3.333 3.333 0 0 0 10 16.333v7.193a3.447 3.447 0 0 0 2.14 3.24c1.238.5 2.656.182 3.56-.8L18.52 23h2.96l2.82 2.966a3.2 3.2 0 0 0 3.56.8 3.447 3.447 0 0 0 2.14-3.24v-7.193A3.333 3.333 0 0 0 26.666 13Zm-9.333 6H16v1.333a.667.667 0 0 1-1.333 0V19h-1.333a.667.667 0 0 1 0-1.334h1.333v-1.333a.667.667 0 1 1 1.333 0v1.333h1.333a.667.667 0 1 1 0 1.334Zm7.333 2a2.667 2.667 0 1 1 0-5.333 2.667 2.667 0 0 1 0 5.333ZM26 18.333a1.333 1.333 0 1 1-2.667 0 1.333 1.333 0 0 1 2.667 0Z"
+											/>
+										</g>
+									</svg>
+									<div class="plan-title">
+										<h3>Pro</h3>
+										<p>$15/mo</p>
+									</div>
+								</button>
+							</div>
+
+							<!-- Monthly/Yearly Toggle Switch -->
+							<div class="toggle-switch">
+								<p>Monthly</p>
+								<label class="switch">
+									<input type="checkbox" />
+									<span class="slider round"></span>
+								</label>
+								<p>Yearly</p>
+							</div>
+						</div>
+
+						<!-- Navigation Buttons -->
+						<div class="button-group">
+							<button class="prev-step" type="button">Go Back</button>
+							<button class="next-step" type="button">Next Step</button>
+						</div>
+					</div>
 				</div>
+
 				<div class="form-step" data-step="3">
 					<!-- Step 3: Add-ons -->
-					<h2>Step 3: Add-ons</h2>
-					<!-- Include add-on selection or information -->
-					<button class="prev-step">Previous</button>
-					<button class="next-step">Next</button>
+					<div class="content-container">
+						<div class="step-title">
+							<h1>Pick add-ons</h1>
+							<p>Add-ons help enhance your gaming experience.</p>
+						</div>
+
+						<!-- Plan Selection Buttons -->
+						<div class="add-ons-selection">
+							<div class="add-ons-buttons">
+								<button class="add-ons-button" type="button" data-plan="Arcade">
+									<input type="checkbox" name="checkbox" id="" />
+									<label for=""></label>
+									<div class="add-ons-title">
+										<h3>Online service</h3>
+										<p>Access to multiplayer games</p>
+									</div>
+									<div class="add-ons-price"><p>+$1/mo</p></div>
+								</button>
+								<button class="add-ons-button" type="button" data-plan="Arcade">
+									<input type="checkbox" name="checkbox" id="" />
+									<label for=""></label>
+									<div class="add-ons-title">
+										<h3>Larger storage</h3>
+										<p>Extra 1TB of cloud save</p>
+									</div>
+									<div class="add-ons-price"><p>+$2/mo</p></div>
+								</button>
+								<button class="add-ons-button" type="button" data-plan="Arcade">
+									<input type="checkbox" name="checkbox" id="" />
+									<label for=""></label>
+									<div class="add-ons-title">
+										<h3>Customizable profile</h3>
+										<p>Custom theme on your profile</p>
+									</div>
+									<div class="add-ons-price"><p>+$2/mo</p></div>
+								</button>
+							</div>
+						</div>
+
+						<!-- Navigation Buttons -->
+						<div class="button-group">
+							<button class="prev-step" type="button">Go Back</button>
+							<button class="next-step" type="button">Next Step</button>
+						</div>
+					</div>
 				</div>
 				<div class="form-step" data-step="4">
 					<!-- Step 4: Summary -->
-					<h2>Step 4: Summary</h2>
-					<!-- Include summary of user input -->
-					<button class="prev-step">Previous</button>
-					<button type="submit">Submit</button>
+					<div class="content-container">
+						<div class="step-title">
+							<h1>Finishing up</h1>
+							<p>Double check everything looks OK before confirming.</p>
+						</div>
+
+						<!-- HTML Summary Section -->
+						<div class="summary" style="display: none">
+							<div class="summary-details" style="display: none">
+								<div class="summary-details--container">
+									<div class="plan-details">
+										<!-- Selected plan and price will be displayed here -->
+										<div>
+											<h4 class="plan-details--title">Arcade (Monthly)</h4>
+											<a class="plan-change" href="">Change</a>
+										</div>
+										<h4 class="plan-details--price">$9/mo</h4>
+									</div>
+									<hr class="summary-divider" />
+									<div class="add-ons-details">
+										<!-- Selected add-ons and prices will be displayed here -->
+										<p class="add-ons-details--title">Online service</p>
+										<p class="add-ons-details--price">+$1/mo</p>
+									</div>
+								</div>
+								<div class="total-cost">
+									<!-- Total cost per month/year will be displayed here -->
+									<p class="total-cost--title">Total (per month)</p>
+									<h2 class="total-cost--price">+10/mo</h2>
+								</div>
+							</div>
+						</div>
+
+						<!-- Navigation Buttons -->
+						<div class="button-group">
+							<button class="prev-step" type="button">Go Back</button>
+							<button class="next-step" type="submit">Confirm</button>
+						</div>
+					</div>
 				</div>
 			</form>
 		</div>
@@ -106,7 +302,7 @@
 			Challenge by
 			<a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
 				>Frontend Mentor</a
-			>. Coded by <a href="#">Your Name Here</a>.
+			>. Coded by <a href="#">YDev Tom</a>.
 		</div>
 		<script src="scripts.js"></script>
 	</body>
